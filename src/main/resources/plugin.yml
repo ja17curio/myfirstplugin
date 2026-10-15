@@ -1,0 +1,17 @@
+name: myfirstplugin
+version: '${version}'
+
+main: games.toost.myfirstplugin.Myfirstplugin
+api-version: '26.3'
+load: POSTWORLD
+
+commands: # Commandos van de plugin
+  heal: # Naam van het commando
+    description: 'Heal commando' # Beschrijving van het commando
+  broadcast: # Naam van het commando
+    description: 'broadcast commando' # Beschrijving van het commando
+  teleport: # teleport commando
+    description: 'teleport commando'
+    usage: '/teleport <x> <y> <z>'
+  spawn:
+    description: 'teleport to spawn'
