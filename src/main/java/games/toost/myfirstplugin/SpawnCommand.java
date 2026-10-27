@@ -19,8 +19,9 @@ public class SpawnCommand implements CommandExecutor {
                 player.teleport(teleportLocation);
                 player.sendMessage("Je bent geteleporteerd naar spawn");
             } else {
-                player.sendMessage("Je mag dit commando niet uitvoeren");
+                Messages.noPermission(player);
             }
+            return true;
         }
 
         return false;

@@ -43,6 +43,9 @@ public class TeleportCommand implements CommandExecutor, TabCompleter {
                     player.sendMessage("Gebruik: /teleport <x> <y> <z>");
                     return true;
                 }
+            } else {
+                Messages.noPermission(player);
+                return true;
             }
         }
 

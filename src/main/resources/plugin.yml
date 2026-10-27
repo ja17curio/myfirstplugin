@@ -12,7 +12,7 @@ commands: # Commandos van de plugin
     description: 'broadcast commando' # Beschrijving van het commando
   teleport: # teleport commando
     description: 'teleport commando'
-    usage: '/teleport <x> <y> <z>'
+    usage: 'use: /teleport <x> <y> <z>'
   spawn:
     description: 'teleport to spawn'
 

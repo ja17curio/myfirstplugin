@@ -13,7 +13,10 @@ public class HealCommand implements CommandExecutor {
             if (player.hasPermission("myfirstplugin.heal")) {
                 player.setHealth(20);
                 player.sendMessage("Je bent gehealed!");
+            } else {
+                Messages.noPermission(player);
             }
+            return true;
         }
         return false;
     }

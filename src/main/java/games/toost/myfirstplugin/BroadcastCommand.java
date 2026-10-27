@@ -18,7 +18,11 @@ public class BroadcastCommand implements CommandExecutor {
                 } else {
                     String message = String.join(" ", args);
                     Bukkit.broadcast(Component.text(message));
+                    return true;
                 }
+            } else {
+                Messages.noPermission(player);
+                return true;
             }
         }
         return false;
