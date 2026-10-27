@@ -17,7 +17,7 @@ public class BroadcastCommand implements CommandExecutor {
                     player.sendMessage("Gebruik /broadcast <message>");
                 } else {
                     String message = String.join(" ", args);
-                    Bukkit.broadcast(Component.text(message));
+                    Bukkit.broadcast(Component.text("§1" + message));
                     return true;
                 }
             } else {
