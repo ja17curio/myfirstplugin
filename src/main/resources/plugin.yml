@@ -15,3 +15,17 @@ commands: # Commandos van de plugin
     usage: '/teleport <x> <y> <z>'
   spawn:
     description: 'teleport to spawn'
+
+permissions: # Permissions van de plugin
+  myfirstplugin.heal: # Naam van de permission
+    description: 'Heal commando' # Beschrijving van de permission
+    default: op # Default waarde van de permission
+  myfirstplugin.broadcast: # Naam van de permission
+    description: 'Broadcast commando' # Beschrijving van de permission
+    default: op # Default waarde van de permission
+  myfirstplugin.teleport: # Naam van de permission
+    description: 'Teleport commando' # Beschrijving van de permission
+    default: op # Default waarde van de permission
+  myfirstplugin.spawn:
+    description: 'Spawn commando'
+    default: true

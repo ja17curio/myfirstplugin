@@ -13,10 +13,14 @@ public class SpawnCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String @NotNull [] args) {
         if (sender instanceof Player player) {
-            int y = Bukkit.getWorlds().getFirst().getHighestBlockYAt(0,0) + 1;
-            Location teleportLocation = new Location(Bukkit.getWorlds().getFirst(), 0, y,0);
-            player.teleport(teleportLocation);
-            player.sendMessage("Je bent geteleporteerd naar spawn");
+            if (player.hasPermission("myfirstplugin.spawn")) {
+                int y = Bukkit.getWorlds().getFirst().getHighestBlockYAt(0, 0) + 1;
+                Location teleportLocation = new Location(Bukkit.getWorlds().getFirst(), 0, y, 0);
+                player.teleport(teleportLocation);
+                player.sendMessage("Je bent geteleporteerd naar spawn");
+            } else {
+                player.sendMessage("Je mag dit commando niet uitvoeren");
+            }
         }
 
         return false;

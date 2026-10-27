@@ -19,33 +19,31 @@ public class TeleportCommand implements CommandExecutor, TabCompleter {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String @NotNull [] args) {
 
         if (sender instanceof Player player) {
+            if (player.hasPermission("myfirstplugin.teleport")) {
+                if (args.length == 3) {
+                    double x;
+                    double y;
+                    double z;
+                    try {
+                        x = Double.parseDouble(args[0]);
+                        y = Double.parseDouble(args[1]);
+                        z = Double.parseDouble(args[2]);
+                    } catch (NumberFormatException e) {
+                        player.sendMessage("De coördinaten moeten getallen zijn!");
+                        return true;
+                    }
 
-            if(args.length == 3) {
-                double x;
-                double y;
-                double z;
-                try {
-                    x = Double.parseDouble(args[0]);
-                    y = Double.parseDouble(args[1]);
-                    z = Double.parseDouble(args[2]);
-                } catch (NumberFormatException e) {
-                    player.sendMessage("De coördinaten moeten getallen zijn!");
+                    World playerWorld = player.getLocation().getWorld();
+                    Location teleportLocation = new Location(playerWorld, x, y, z);
+                    player.teleport(teleportLocation);
+                    player.sendMessage("Je bent geteleporteerd naar: " + x + " " + y + " " + z + " in de dimensie: " + playerWorld.getKey().getKey());
+
+                    return true;
+                } else {
+                    player.sendMessage("Gebruik: /teleport <x> <y> <z>");
                     return true;
                 }
-
-                World playerWorld = player.getLocation().getWorld();
-                Location teleportLocation = new Location(playerWorld, x,y,z);
-                player.teleport(teleportLocation);
-                player.sendMessage("Je bent geteleporteerd naar: "+ x + " " + y + " " + z + " in de dimensie: " + playerWorld.getKey().getKey());
-
-                return true;
             }
-            else {
-                player.sendMessage("Gebruik: /teleport <x> <y> <z>");
-                return true;
-            }
-
-
         }
 
         return false;

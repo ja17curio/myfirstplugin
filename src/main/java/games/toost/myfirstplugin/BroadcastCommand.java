@@ -12,11 +12,13 @@ public class BroadcastCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
-            if (args.length == 0) {
-                player.sendMessage("Gebruik /broadcast <message>");
-            } else {
-                String message = String.join(" ", args);
-                Bukkit.broadcast(Component.text(message));
+            if (player.hasPermission("myfirstplugin.broadcast")) {
+                if (args.length == 0) {
+                    player.sendMessage("Gebruik /broadcast <message>");
+                } else {
+                    String message = String.join(" ", args);
+                    Bukkit.broadcast(Component.text(message));
+                }
             }
         }
         return false;

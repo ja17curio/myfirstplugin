@@ -10,8 +10,10 @@ public class HealCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
-            player.setHealth(20);
-            player.sendMessage("Je bent gehealed!");
+            if (player.hasPermission("myfirstplugin.heal")) {
+                player.setHealth(20);
+                player.sendMessage("Je bent gehealed!");
+            }
         }
         return false;
     }
