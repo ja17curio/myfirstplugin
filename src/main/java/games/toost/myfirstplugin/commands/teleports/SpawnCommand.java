@@ -1,5 +1,6 @@
-package games.toost.myfirstplugin;
+package games.toost.myfirstplugin.commands.teleports;
 
+import games.toost.myfirstplugin.Messages;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.Command;

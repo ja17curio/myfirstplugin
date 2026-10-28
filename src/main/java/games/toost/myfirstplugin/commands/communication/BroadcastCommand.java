@@ -1,5 +1,6 @@
-package games.toost.myfirstplugin;
+package games.toost.myfirstplugin.commands.communication;
 
+import games.toost.myfirstplugin.Messages;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;

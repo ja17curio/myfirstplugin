@@ -15,6 +15,8 @@ commands: # Commandos van de plugin
     usage: 'use: /teleport <x> <y> <z>'
   spawn:
     description: 'teleport to spawn'
+  setwarp:
+    description: 'make a new warp on current location'
 
 permissions: # Permissions van de plugin
   myfirstplugin.heal: # Naam van de permission
@@ -28,4 +30,7 @@ permissions: # Permissions van de plugin
     default: op # Default waarde van de permission
   myfirstplugin.spawn:
     description: 'Spawn commando'
+    default: true
+  myfirstplugin.setwarp:
+    description: 'Make a new warp on current location'
     default: true

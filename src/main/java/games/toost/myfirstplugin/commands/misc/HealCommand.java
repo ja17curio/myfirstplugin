@@ -1,5 +1,6 @@
-package games.toost.myfirstplugin;
+package games.toost.myfirstplugin.commands.misc;
 
+import games.toost.myfirstplugin.Messages;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

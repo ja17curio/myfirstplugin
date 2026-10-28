@@ -1,8 +1,6 @@
-package games.toost.myfirstplugin;
+package games.toost.myfirstplugin.commands.teleports;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import games.toost.myfirstplugin.Messages;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.command.Command;
