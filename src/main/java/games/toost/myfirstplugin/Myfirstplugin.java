@@ -5,6 +5,7 @@ import games.toost.myfirstplugin.commands.misc.HealCommand;
 import games.toost.myfirstplugin.commands.teleports.SpawnCommand;
 import games.toost.myfirstplugin.commands.teleports.TeleportCommand;
 import games.toost.myfirstplugin.commands.warps.SetwarpCommand;
+import games.toost.myfirstplugin.commands.warps.WarpCommand;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -21,11 +22,25 @@ public final class Myfirstplugin extends JavaPlugin {
         warpConfig = YamlConfiguration.loadConfiguration(new File(getDataFolder() + "/warps.yml"));
 
         // Plugin startup logic
-        getCommand("heal").setExecutor(new HealCommand());
+        //communication commands
         getCommand("broadcast").setExecutor(new BroadcastCommand());
+
+        //teleport commands
         getCommand("teleport").setExecutor(new TeleportCommand());
         getCommand("spawn").setExecutor(new SpawnCommand());
-        getCommand("setwarp").setExecutor(new SetwarpCommand(warpConfig, this));
+
+        //misc commands
+        getCommand("heal").setExecutor(new HealCommand());
+
+        //warp commands
+        WarpCommand warpCommand = new WarpCommand(warpConfig, this);
+        getCommand("setwarp").setExecutor(warpCommand);
+        getCommand("warp").setExecutor(warpCommand);
+        getCommand("warp").setTabCompleter(warpCommand);
+
+
+        // TODO WARP LIST COMMAND
+        // TODO WARP DELETE COMMAND
     }
 
     @Override
