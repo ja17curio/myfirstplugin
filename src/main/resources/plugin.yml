@@ -19,6 +19,10 @@ commands: # Commandos van de plugin
     description: 'make a new warp on current location'
   warp:
     description: 'teleport to warp'
+  warpslist:
+    description: "shows a list of warps"
+  delwarp:
+    description: "removes a warp"
 
 permissions: # Permissions van de plugin
   myfirstplugin.heal: # Naam van de permission
@@ -38,4 +42,10 @@ permissions: # Permissions van de plugin
     default: true
   myfirstplugin.warp:
     description: 'teleport to warp'
+    default: true
+  myfirstplugin.warpslist:
+    description: 'show available warps'
+    default: true
+  myfirstplugin.delwarp:
+    description: 'remove a warp'
     default: true

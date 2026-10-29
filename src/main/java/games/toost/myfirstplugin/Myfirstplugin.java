@@ -4,8 +4,10 @@ import games.toost.myfirstplugin.commands.communication.BroadcastCommand;
 import games.toost.myfirstplugin.commands.misc.HealCommand;
 import games.toost.myfirstplugin.commands.teleports.SpawnCommand;
 import games.toost.myfirstplugin.commands.teleports.TeleportCommand;
+import games.toost.myfirstplugin.commands.warps.DelwarpCommand;
 import games.toost.myfirstplugin.commands.warps.SetwarpCommand;
 import games.toost.myfirstplugin.commands.warps.WarpCommand;
+import games.toost.myfirstplugin.commands.warps.WarpsListCommand;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -34,13 +36,17 @@ public final class Myfirstplugin extends JavaPlugin {
 
         //warp commands
         WarpCommand warpCommand = new WarpCommand(warpConfig, this);
-        getCommand("setwarp").setExecutor(warpCommand);
+        DelwarpCommand delwarpCommand = new DelwarpCommand(warpConfig, this);
+        getCommand("setwarp").setExecutor(new SetwarpCommand(warpConfig, this));
         getCommand("warp").setExecutor(warpCommand);
         getCommand("warp").setTabCompleter(warpCommand);
+        getCommand("warpslist").setExecutor(new WarpsListCommand(warpConfig, this));
+        getCommand("delwarp").setExecutor(delwarpCommand);
+        getCommand("delwarp").setTabCompleter(delwarpCommand);
 
-
-        // TODO WARP LIST COMMAND
-        // TODO WARP DELETE COMMAND
+        // TODO homes system (personal warps)
+        // TODO player ranks
+        // TODO set permissions based on rank
     }
 
     @Override
