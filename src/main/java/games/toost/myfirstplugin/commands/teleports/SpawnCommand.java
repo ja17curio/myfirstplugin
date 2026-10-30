@@ -1,6 +1,7 @@
 package games.toost.myfirstplugin.commands.teleports;
 
 import games.toost.myfirstplugin.Messages;
+import games.toost.myfirstplugin.helpers.PermissionHelper;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -14,14 +15,17 @@ public class SpawnCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String @NotNull [] args) {
         if (sender instanceof Player player) {
-            if (player.hasPermission("myfirstplugin.spawn")) {
-                int y = Bukkit.getWorlds().getFirst().getHighestBlockYAt(0, 0) + 1;
-                Location teleportLocation = new Location(Bukkit.getWorlds().getFirst(), 0, y, 0);
-                player.teleport(teleportLocation);
-                player.sendMessage("Je bent geteleporteerd naar spawn");
-            } else {
+
+            if (!PermissionHelper.checkPermission("myfirstplugin.delwarp", player)) {
                 Messages.noPermission(player);
+                return true;
             }
+
+            int y = Bukkit.getWorlds().getFirst().getHighestBlockYAt(0, 0) + 1;
+            Location teleportLocation = new Location(Bukkit.getWorlds().getFirst(), 0, y, 0);
+            player.teleport(teleportLocation);
+            player.sendMessage("Je bent geteleporteerd naar spawn");
+
             return true;
         }
 

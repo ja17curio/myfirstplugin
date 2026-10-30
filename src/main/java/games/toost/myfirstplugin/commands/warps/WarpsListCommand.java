@@ -1,6 +1,8 @@
 package games.toost.myfirstplugin.commands.warps;
 
+import games.toost.myfirstplugin.Messages;
 import games.toost.myfirstplugin.Myfirstplugin;
+import games.toost.myfirstplugin.helpers.PermissionHelper;
 import net.kyori.adventure.text.event.ClickEvent;
 import net.kyori.adventure.text.event.HoverEvent;
 import org.bukkit.command.Command;
@@ -13,14 +15,11 @@ import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 import net.kyori.adventure.text.Component;
 
-import static net.kyori.adventure.text.event.HoverEvent.hoverEvent;
-import static net.kyori.adventure.text.event.HoverEvent.showText;
 
 public class WarpsListCommand implements CommandExecutor {
 
@@ -36,6 +35,11 @@ public class WarpsListCommand implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String @NotNull [] args) {
 
         if (sender instanceof Player player) {
+
+            if (!PermissionHelper.checkPermission("myfirstplugin.warpslist", player)) {
+                Messages.noPermission(player);
+                return true;
+            }
 
             ConfigurationSection warps = config.getConfigurationSection("warp");
 
